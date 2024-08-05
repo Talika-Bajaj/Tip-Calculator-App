@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  <title>Tip calculator app</title>
+
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="heading">
+        <h3>SPLI</h3>
+        <h3>TTER</h3>
+      </div>
+      <div class="card">
+        <form class="tip-form">
+          <div class="enter-details">
+
+            <div class="input-group">
+              <div class="labels">
+                <label for="bill" class="label">Bill</label>
+                <p class="error empty">Can't be empty</p>
+                <p class="error zero">Can't be zero</p>
+              </div>
+              <div class="inputs">
+                <img src="images/icon-dollar.svg" alt="dollar" id="input-img">
+                <input type="text" id="bill" class="input input-field" placeholder="0" value="142.55">
+              </div>
+              
+            </div>
+            <div class="input-group">
+              <p class="label">Select Tip %</p>
+              <div class="buttons">
+                <button class="btn">5%</button>
+                <button class="btn">10%</button>
+                <button class="btn active">15%</button>
+                <button class="btn">25%</button>
+                <button class="btn">50%</button>
+                <input type="text" id="custom-tip" placeholder="Custom" class="input">
+                <div class="custom-labels">
+
+                  <p class="error emptyy">Can't be empty</p>
+                <p class="error zeroo">Can't be zero</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="labels">
+                <label for="num" class="label">Number of People</label>
+                <p class="error empty">Can't be empty</p>
+                <p class="error zero">Can't be zero</p>
+              </div>
+              <div class="inputs">
+                <img src="images/icon-person.svg" alt="person" id="input-img">
+                <input type="text" id="num" class="input input-field" placeholder="0" value="5">
+              </div>
+            </div>
+          </div>
+            <div class="show-details">
+
+              <div class="display-amt">
+                <div class="display-data">
+                  
+                  <div class="tip-amt">
+                    <p class="amt">Tip Amount</p>
+                    <p class="per-person">/ person</p>
+                  </div>
+                  <h1 class="tip-pp total">$4.27</h1>
+                </div>
+                
+                <div class="display-data">
+                  <div class="tip-amt">
+                    <p class="amt">Total</p>
+                    <p class="per-person">/ person</p>
+                  </div>
+                  <h1 class="total-pp total">$32.79</h1>
+                </div>
+              </div>
+              <button id="reset-btn">RESET</button>
+              
+            </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="index.js"></script>
+  <!-- <script src="script.js"></script> -->
+</body>
+
+</html>

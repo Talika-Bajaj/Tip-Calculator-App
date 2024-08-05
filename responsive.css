@@ -1,0 +1,41 @@
+@media screen and (width > 400px) {
+    main {
+        margin: 50px 0;
+    }
+    .container {
+        width: 400px;
+    }
+
+    .tip-form {
+        border-radius: 18px;
+    }
+}
+
+@media screen and (width > 1250px) {
+    .container {
+        width: auto;
+    }
+    .tip-form {
+        grid-template-columns: 48.5% 48.5%;
+        padding: 35px 25px;
+        width: 1020px;
+    }
+
+    .buttons {
+        grid-template-columns: 31% 31% 31%;
+    }
+
+    .show-details {
+        gap: 0;
+    background-color: var(--Very_dark_cyan);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px 30px;
+    border-radius: 15px;
+    }
+    
+.display-amt {
+    padding: 0px;
+}
+}
