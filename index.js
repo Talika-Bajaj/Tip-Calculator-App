@@ -123,7 +123,7 @@ customTip.addEventListener('keyup', () => {
     }
 
 
-    if (billVal !== '' && peopleVal !== '') {
+    if ((billVal !== '' && peopleVal !== '') || (billVal == '0' && peopleVal == '0') ) {
         calculateTip();
     } else {
         resetAmounts();
@@ -134,4 +134,8 @@ resetBtn.addEventListener('click', (e) => {
     e.preventDefault();
     resetAmounts();
     resetValues();
+})
+
+customTip.addEventListener('keydown', ()=> {
+    hideError(emptyy, customTip);
 })
