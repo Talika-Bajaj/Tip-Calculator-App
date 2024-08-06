@@ -10,14 +10,14 @@
 :root {
     --Strong_cyan: hsl(172, 67%, 45%);
 
-/* Neutral */
+    /* Neutral */
 
---Very_dark_cyan: hsl(183, 100%, 15%);
---Dark_grayish_cyan: hsl(186, 14%, 43%);
---Grayish_cyan: hsl(184, 14%, 56%);
---Light_grayish_cyan: hsl(185, 41%, 84%);
---Very_light_grayish_cyan: hsl(189, 41%, 97%);
---White: hsl(0, 0%, 100%);
+    --Very_dark_cyan: hsl(183, 100%, 15%);
+    --Dark_grayish_cyan: hsl(186, 14%, 43%);
+    --Grayish_cyan: hsl(184, 14%, 56%);
+    --Light_grayish_cyan: hsl(185, 41%, 84%);
+    --Very_light_grayish_cyan: hsl(189, 41%, 97%);
+    --White: hsl(0, 0%, 100%);
 }
 
 body {
@@ -35,16 +35,18 @@ main {
 .container {
     display: grid;
     grid-template-columns: 100%;
-    gap: 30px;
+    gap: 60px;
     text-align: center;
     /* width: 100vw; */
 }
 
-.container h3 {
+.heading h3 {
     color: var(--Dark_grayish_cyan);
     letter-spacing: 12px;
     /* width: 100px; */
+    font-weight: 700;
 }
+
 .card {
     text-align-last: left;
 }
@@ -98,7 +100,10 @@ main {
     color: red;
 }
 
-.empty, .zero, .emptyy, .zeroo {
+.empty,
+.zero,
+.emptyy,
+.zeroo {
     display: none;
 }
 
@@ -158,17 +163,28 @@ main {
 }
 
 .btn {
-    display: flex; /* Enable Flexbox */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    background-color: var(--Very_dark_cyan); /* Background color */
-    color: var(--White); /* Text color */
-    padding: 5px 17px; /* Padding for button */
-    border-radius: 5px; /* Rounded corners */
-    font-weight: 700; /* Bold text */
-    border: none; /* No border */
-    font-size: 24px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
+    display: flex;
+    /* Enable Flexbox */
+    justify-content: center;
+    /* Center content horizontally */
+    align-items: center;
+    /* Center content vertically */
+    background-color: var(--Very_dark_cyan);
+    /* Background color */
+    color: var(--White);
+    /* Text color */
+    padding: 5px 17px;
+    /* Padding for button */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-weight: 700;
+    /* Bold text */
+    border: none;
+    /* No border */
+    font-size: 24px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
     transition: all 0.3s ease-in;
     border: 2px solid var(--Very_dark_cyan);
 }
@@ -178,6 +194,7 @@ main {
     color: var(--Very_dark_cyan);
     border: 2px solid hsl(172deg 66.39% 64.04%);
 }
+
 .active {
     background-color: var(--Strong_cyan);
     color: var(--Very_dark_cyan);
@@ -197,12 +214,12 @@ main {
 
 .show-details {
     gap: 60px;
-background-color: var(--Very_dark_cyan);
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-padding: 35px 19px;
-border-radius: 15px;
+    background-color: var(--Very_dark_cyan);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px 19px;
+    border-radius: 15px;
 }
 
 .amt {
@@ -224,7 +241,7 @@ border-radius: 15px;
 
 .total {
     /* font-weight: 600; */
-    font-size: 36px;
+    font-size: 48px;
     color: var(--Strong_cyan);
 }
 
@@ -232,9 +249,12 @@ border-radius: 15px;
     background-color: var(--Strong_cyan);
     color: var(--Very_dark_cyan);
     padding: 12px 15px;
-    display: flex; /* Enable Flexbox */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    display: flex;
+    /* Enable Flexbox */
+    justify-content: center;
+    /* Center content horizontally */
+    align-items: center;
+    /* Center content vertically */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -242,6 +262,11 @@ border-radius: 15px;
     font-size: 21px;
     letter-spacing: 2px;
     transition: all 0.3s ease-in;
+}
+
+#reset-btn:disabled {
+    background-color: hsl(183deg 93.94% 21.11%);
+    color: var(--Dark_grayish_cyan);
 }
 
 #reset-btn:hover {

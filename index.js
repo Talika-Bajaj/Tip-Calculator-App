@@ -11,6 +11,8 @@ const emptyy = document.querySelector('.emptyy');
 const zeroo = document.querySelector('.zeroo');
 const inputs = document.querySelectorAll('.inputs');
 const inputFields = document.querySelectorAll('.input-field');
+const billVal = billAmt.value.trim();
+const peopleVal = numOfPeople.value.trim();
 
 //Toggling active class on buttons
 buttons.forEach(button => {
@@ -20,7 +22,12 @@ buttons.forEach(button => {
         button.classList.add('active');
         hideError(emptyy, customTip);
         hideError(zeroo, customTip);
-        calculateTip();
+        document.getElementById('custom-tip').value = '';
+        resetBtn.disabled = false;
+
+        if ((billVal === '' || peopleVal === '')) {
+            resetAmounts();
+        }
     })
 })
 
@@ -43,11 +50,14 @@ inputFields.forEach((field, index) => {
             hideError(zero[index], inputs[index]);
             displayError(empty[index], inputs[index]);
             resetAmounts();
+            resetBtn.disabled = true;
         } else if (field.value == '0') {
             hideError(empty[index], inputs[index])
             displayError(zero[index], inputs[index])
             resetAmounts();
+            resetBtn.disabled = false;
         } else {
+            resetBtn.disabled = false;
             hideError(zero[index], inputs[index])
             hideError(empty[index], inputs[index])
             calculateTip();
@@ -76,7 +86,6 @@ function calculateTip(params) {
     if (customTip.value > 0) {
         let customVal = customTip.value;
         let tipAmount = parseFloat((billVal * (customVal / 100)) / people);
-
         let totalAmount = parseFloat((billVal / people) + tipAmount);
         let totalPP = totalAmount.toFixed(2)
         tipPerPerson.innerHTML = `$${tipAmount.toFixed(2)}`;
@@ -90,7 +99,7 @@ function resetAmounts(params) {
     amtPerPerson.innerHTML = `$0.00`;
 }
 
-// Function to reset input fields
+// Function to reset input field's value
 function resetValues() {
     inputFields.forEach(field => {
         buttons.forEach(button => button.classList.remove('active'));
@@ -105,9 +114,6 @@ customTip.addEventListener('click', () => {
 })
 
 customTip.addEventListener('keyup', () => {
-    const billVal = billAmt.value.trim();
-    const peopleVal = numOfPeople.value.trim();
-
     if (customTip.value == '') {
         hideError(zeroo, customTip)
         displayError(emptyy, customTip)
@@ -119,23 +125,51 @@ customTip.addEventListener('keyup', () => {
     } else {
         hideError(emptyy, customTip)
         hideError(zeroo, customTip)
+        resetBtn.disabled = false;
         calculateTip();
     }
 
-
-    if ((billVal !== '' && peopleVal !== '') || (billVal == '0' && peopleVal == '0') ) {
+    if ((billVal !== '' && peopleVal !== '') || (billVal == '0' && peopleVal == '0')) {
         calculateTip();
     } else {
         resetAmounts();
     }
 })
 
+customTip.addEventListener('keydown', () => {
+    buttons.forEach(button => {
+        if (button.classList.contains('active')) {
+            hideError(emptyy, customTip);
+        } else {
+            displayError(emptyy, customTip);
+        }
+    })
+})
+
+//Event listener on bill amount input field
+billAmt.addEventListener('keyup', () => {
+    buttons.forEach(button => {
+        if ((billVal === '' || peopleVal === '') && button.classList.contains('active')) {
+            resetAmounts();
+        }
+    })
+
+    if ((billVal === '' || peopleVal === '') && customTip.value !== '') {
+        resetAmounts();
+    }
+})
+
+//Event listener on reset button
 resetBtn.addEventListener('click', (e) => {
     e.preventDefault();
     resetAmounts();
     resetValues();
+    hideError(emptyy, customTip)
+    inputs.forEach((input, index) => {
+        hideError(empty[index], input)
+    })
+
 })
 
-customTip.addEventListener('keydown', ()=> {
-    hideError(emptyy, customTip);
-})
+//disabling reset button at start
+resetBtn.disabled = true;
