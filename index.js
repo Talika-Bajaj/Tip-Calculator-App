@@ -14,6 +14,11 @@ const inputFields = document.querySelectorAll('.input-field');
 const billVal = billAmt.value.trim();
 const peopleVal = numOfPeople.value.trim();
 
+function isValidNumber(value) {
+    const regex = /^\d+(\.\d+)?$/;
+    return regex.test(value);
+}
+
 //Toggling active class on buttons
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -56,7 +61,7 @@ inputFields.forEach((field, index) => {
             displayError(zero[index], inputs[index])
             resetAmounts();
             resetBtn.disabled = false;
-        } else {
+        } else if (isValidNumber(field.value)) {
             resetBtn.disabled = false;
             hideError(zero[index], inputs[index])
             hideError(empty[index], inputs[index])
@@ -122,7 +127,7 @@ customTip.addEventListener('keyup', () => {
         hideError(emptyy, customTip)
         displayError(zeroo, customTip)
         resetAmounts();
-    } else {
+    } else  if (isValidNumber(customTip.value)){
         hideError(emptyy, customTip)
         hideError(zeroo, customTip)
         resetBtn.disabled = false;
